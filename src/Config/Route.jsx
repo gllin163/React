@@ -42,16 +42,34 @@ const rootRoute = {
     /*onEnter: userAuth,*/
   },
   component: Roots,
- /* childRoutes: [{
-    //1.我的奖励
-    path: 'reward/rewardList',
+  childRoutes: [{
+    //1.消息
+    path: 'news/indexList',
     getComponent (nextState, cb) {
       require.ensure([], (require) => {
-        cb(null, require('../Component/indexList/IndexList').default);
-      }, 'reward_rewardList');
+        cb(null, require('../Component/newsList/IndexList').default);
+      }, 'news_indexList');
     },
 
-  }],*/
+  },{
+      //2.顾客
+      path: 'customer/indexList',
+      getComponent (nextState, cb) {
+          require.ensure([], (require) => {
+              cb(null, require('../Component/customerList/IndexList').default);
+          }, 'customer_indexList');
+      },
+
+  },{
+      //3.我的
+      path: 'my/indexList',
+      getComponent (nextState, cb) {
+          require.ensure([], (require) => {
+              cb(null, require('../Component/myList/IndexList').default);
+          }, 'my_indexList');
+      },
+
+  }],
 };
 
 const RouteConfig = (
